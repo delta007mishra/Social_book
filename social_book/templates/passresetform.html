@@ -1,0 +1,20 @@
+<!-- password_reset_confirm.html -->
+
+{% extends 'forgotpass.html' %}
+
+{% block content %}
+<h2>Password Reset Confirmation</h2> <br><br>
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="input-group custom">
+        <label for="password" class="col-sm-4 col-form-label" style="font-weight:bold;">New Password: </label>
+        <input type="password" id="password" class="form-control form-control-lg" placeholder="**********" name="password" required>
+        <div class="input-group-append custom">
+            <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+        </div>
+    </div>
+    <div class="input-group mb-0">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Set New Password</button>
+    </div>
+</form>
+{% endblock %}
