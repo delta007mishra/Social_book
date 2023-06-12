@@ -1,0 +1,104 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="pd-20 card-box mb-30">
+    <div class="clearfix">
+        <div class="pull-left">
+            <!-- <h4 class="text-blue h4">Default Basic Forms</h4> -->
+            <!-- <p class="mb-30">All bootstrap element classies</p> -->
+        </div>
+    </div>
+    <!-- {% if messages %}
+    <ul class="messages alert alert-danger">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %} -->
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'upload_book' %}">
+        {% csrf_token %}
+        <br><br>
+
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Title</label>
+            <div class="col-sm-12 col-md-10">
+                <input class="form-control" type="text" placeholder="Book name" name="title" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Description</label>
+            <div class="col-sm-12 col-md-10"></div>
+            <textarea class="form-control" name="description" id="description" required></textarea>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Visibility</label>
+            <div class="custom-control custom-checkbox mb-5">
+                <input type="checkbox" id="visibility" name="visibility">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Cost</label>
+            <div class="col-sm-12 col-md-10">
+                <input class="form-control" type="number" name="cost" id="cost" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Year Published</label>
+            <div class="col-sm-12 col-md-10">
+                <input class="form-control date-picker" placeholder="Select Date" type="text" name="year_published"
+                    id="year_published" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="file">Upload File:</label>
+            <input type="file" class="form-control-file form-control height-auto" name="file" id="file"
+                accept=".pdf,.jpeg,.jpg" required>
+        </div>
+
+        <div class="form-group row">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- <h2>Uploaded Files:</h2> <br><br>
+{% for file in uploaded_files %}
+<p>{{ file.title }}</p>
+<p>{{ file.description }}</p>
+<p>Visibility: {% if file.visibility %}Visible{% else %}Hidden{% endif %}</p>
+<p>Cost: {{ file.cost }}</p>
+<p>Year Published: {{ file.year_published }}</p>
+<a href="{{ file.file.url }}"  target="_blank" style="font-size:medium; font-weight: bold;">View File</a>
+<br><hr style="border: 2px solid black;"><br>
+{% empty %}
+<p>No files uploaded yet.</p>
+{% endfor %} -->
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">URL</label>
+            <div class="col-sm-12 col-md-10">
+                <input class="form-control" value="https://getbootstrap.com" type="url">
+            </div>
+        </div> -->

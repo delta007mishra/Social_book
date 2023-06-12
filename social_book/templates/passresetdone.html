@@ -1,0 +1,11 @@
+{% extends "forgotpass.html" %}
+
+{% block content %}
+<h2>Password Reset Done</h2> <br>
+<p style="font-weight:bold;">Your password has been successfully reset.</p>
+<p style="font-weight:bold;">You can now log in with your new password.</p><br>
+<div class="input-group mb-0">
+    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'login' %}">Login</a>
+</div>
+</div>
+{% endblock content %}

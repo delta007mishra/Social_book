@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Books</h4>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% if uploaded_files %}
+        <div class="container">
+            <div class="row">
+                {% for file in uploaded_files %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if file.is_pdf %}
+                        <div class="card-body">
+                            <!-- <p>hello {{file.is_pdf}} in if block</p> -->
+                            <img class="card-img-top" style="height: 200px; object-fit: contain;"
+                                src="{% static '/pdfimage/pdfimg.jpeg' %}"><br>
+                            <div
+                                style=" display: flex; flex-direction: column;justify-content: center;align-items: center;padding: 20px;text-align: center;">
+                                <h5 class="card-title">{{ file.title }}</h5>
+                                <p class="card-text">{{ file.description }}</p>
+                                <p class="card-text"><small class="text-muted">{{file.cost}}</small></p>
+                                <p class="card-text"><small class="text-muted">{{ file.year_published }}</small></p>
+                            </div>
+                            <a href="{{ file.file.url }}" target="_blank"
+                                style="font-size:medium; font-weight: bold;"><input type="button"
+                                    class="btn btn-primary btn-lg btn-block" value="View File"></a>
+                            </input>
+                        </div>
+                        {% else %}
+                        <!-- <p>in else {{file.is_pdf}} block</p> -->
+                        <div class="card-body">
+                            <img class="card-img-top" style="height: 200px; object-fit: contain;"
+                                src="{{ file.file.url }}" alt="Card image cap"><br>
+                            <div
+                                style=" display: flex; flex-direction: column;justify-content: center;align-items: center;padding: 20px;text-align: center;">
+                                <h5 class="card-title">{{ file.title }}</h5>
+                                <p class="card-text">{{ file.description }}</p>
+                                <p class="card-text"><small class="text-muted">{{file.cost}}</small></p>
+                                <p class="card-text"><small class="text-muted">{{ file.year_published }}</small></p>
+                            </div>
+                            <a href="{{ file.file.url }}" target="_blank"
+                                style="font-size:medium; font-weight: bold;"><input type="button"
+                                    class="btn btn-primary btn-lg btn-block" value="View File"></a>
+                            </input>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+    </div>
+    {% else %}
+    <!-- Display a message when no books are uploaded -->
+    <h1>No books uploaded yet</h1>
+    <p>Please upload books using the "Upload Books" section.</p>
+    {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock content %}

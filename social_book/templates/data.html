@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <br><br><br>
+    <!-- data.html -->
+        <div class="table-responsive">
+            <table class="table" border="1" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in data %}
+                    <tr class="table-active">
+                        <th scope="row">{{obj.id}}</th>
+                        <td>{{obj.full_name}}</td>
+                        <td>{{obj.email}}</td>
+                        <td>{{obj.city}}</td>
+                        <td>{{obj.state}}</td>
+                        <!-- <td><span class="badge badge-primary">Primary</span></td> -->
+                    </tr>
+                    {% endfor %}
+
+{% endblock content %}
